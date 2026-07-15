@@ -57,7 +57,7 @@ function useCSS(rule) {
 * 이펙트는 클라이언트에서만 실행됩니다. 서버 렌더링 중에는 실행되지 않습니다.
 * `useInsertionEffect` 내부에서는 상태를 업데이트할 수 없습니다.
 * `useInsertionEffect`가 실행되는 시점에 ref는 아직 연결되지 않습니다.
-* `useInsertionEffect` 는 DOM 의 업데이트 전 또는 후에 실행됩니다. DOM 이 업데이트 되는 특정시점에 의존해서는 안됩니다.
+* `useInsertionEffect` 는 DOM 의 업데이트 전 또는 후에 실행됩니다. DOM 이 업데이트 되는 특정시점에 의존해서는 안 됩니다.
 * 매번 모든 cleanup 을 실행하고 setup 하는 다른 Effects 와 달리, `useInsertionEffect` 는 하나의 컴포넌트에 대해 cleanup 과 setup 을 모두 실행합니다. 그 결과 cleanup 과 setup 이 'interleaving' 됩니다.
 
 ---
@@ -134,7 +134,7 @@ function useCSS(rule) {
 
 #### 이것이 렌더링 중에 스타일을 주입하거나 useLayoutEffect를 사용하는 것보다 어떻게 더 나은가요? {/*how-is-this-better-than-injecting-styles-during-rendering-or-uselayouteffect*/}
 
-If you insert styles during rendering and React is processing a [non-blocking update,](/reference/react/useTransition#perform-non-blocking-updates-with-actions) the browser will recalculate the styles every single frame while rendering a component tree, which can be **extremely slow.**
+렌더링 중에 스타일을 주입하는데 React가 [non-blocking update](/reference/react/useTransition#perform-non-blocking-updates-with-actions)를 처리하고 있다면, 브라우저는 컴포넌트 트리를 렌더링하는 동안 매 프레임마다 스타일을 다시 계산하므로 **극도로 느려질 수 있습니다.**
 
 `useInsertionEffect`는 컴포넌트에서 다른 Effect가 실행될 때 `<style>` 태그가 주입되어 있음을 보장하기 때문에 [`useLayoutEffect`](/reference/react/useLayoutEffect) 또는 [`useEffect`](/reference/react/useEffect)로 스타일을 주입하는 것보다 낫습니다. 그렇지 않으면 오래된 스타일로 인해 일반 Effects의 레이아웃 계산이 잘못될 수 있습니다.
 

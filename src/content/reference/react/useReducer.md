@@ -849,7 +849,7 @@ export default function TodoList({ username }) {
 
 #### 초기 state 직접 전달 {/*passing-the-initial-state-directly*/}
 
-이 예시에서는 초기화 함수를 **전달하지 않으므로**, `createInitialState` 함수는 인풋에 입력을 할때 발생하는 리렌더링에서도 매번 호출됩니다. 이 코드는 동작에는 큰 차이가 없을 수 있지만, 효율성이 떨어집니다.
+이 예시에서는 초기화 함수를 **전달하지 않으므로**, `createInitialState` 함수는 인풋에 입력을 할 때 발생하는 리렌더링에서도 매번 호출됩니다. 이 코드는 동작에는 큰 차이가 없을 수 있지만, 효율성이 떨어집니다.
 
 <Sandpack>
 
@@ -1064,7 +1064,7 @@ function reducer(state, action) {
 
 ### "Too many re-renders" 오류가 발생합니다. {/*im-getting-an-error-too-many-re-renders*/}
 
-`Too many re-renders. React limits the number of renders to prevent an infinite loop.`라는 에러 메세지를 받을 수 있습니다. 일반적으로는 렌더링 과정에서 dispatch가 실행될 때 이러한 일이 일어납니다. 렌더링은 dispatch를 야기하고, dispatch는 렌더링을 야기하므로 렌더링 무한 루프가 일어납니다. 이러한 상황은 이벤트 핸들러를 잘못 호출할 때 종종 발생합니다.
+`Too many re-renders. React limits the number of renders to prevent an infinite loop.`라는 에러 메시지를 받을 수 있습니다. 일반적으로는 렌더링 과정에서 dispatch가 실행될 때 이러한 일이 일어납니다. 렌더링은 dispatch를 야기하고, dispatch는 렌더링을 야기하므로 렌더링 무한 루프가 일어납니다. 이러한 상황은 이벤트 핸들러를 잘못 호출할 때 종종 발생합니다.
 
 ```js {1-2}
 // 🚩 Wrong: calls the handler during render
